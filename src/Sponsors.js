@@ -5,7 +5,10 @@ const Sponsors = () => {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    fetch('https://linkkijkl.fi/')
+    fetch('https://linkkijkl.fi/', {headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+      }})
       .then(res => res.text())
       .then(data => {
         const parser = new DOMParser();
