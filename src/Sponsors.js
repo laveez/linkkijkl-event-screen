@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Marquee from 'react-fast-marquee';
 
 const Sponsors = () => {
   const [images, setImages] = useState([]);
@@ -18,15 +19,20 @@ const Sponsors = () => {
         }
         setImages(imageUrls);
       });
-  }, []);
+  }, [images.length]);
 
   return (
     <div id="sponsors">
       <h2>Sponsored by:</h2>
       <div id="sponsorsLogos">
-        {images.map((image,i) => (
-          <img key={i} src={image} alt={`img-${i}`} width="200"/>
-        ))}
+        <Marquee
+          gradient={false}
+          speed={30}
+        >
+          {images.map((image, i) => (
+            <img key={i} src={image} alt={`img-${i}`} width={200} style={{margin: '0 100px 0'}}/>
+          ))}
+        </Marquee>
       </div>
     </div>
   );

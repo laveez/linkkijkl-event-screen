@@ -6,8 +6,6 @@ function App() {
   return (
     <div id="app">
       <Events />
-      <div></div>
-      <div></div>
       <Sponsors />
     </div>
   );

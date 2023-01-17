@@ -10,13 +10,15 @@ const Events = () => {
       .then(response => response.json())
       .then(data => setEventData(data));
   }, []);
-  // <li key={index}>{`[${moment(item.start.dateTime).format('DD.MM.YYYY')}] // ${item.summary}`}</li>
-  // <li>{item.summary} {item.location} {moment(item.start.dateTime).format('DD.MM.YYYY')} - {moment(item.end.dateTime).format('DD.MM.YYYY')}</li>)}
+
+  const sortedEvents = eventData?.items.sort((a, b) => new Date(a.start.dateTime) - new Date(b.start.dateTime));
+  const currentEvents = sortedEvents?.filter(event => new Date(event.start.dateTime) > new Date());
+
   return (
     <div id="events">
       <h2>Tapahtumat:</h2>
       <ul>
-        {eventData?.items.map(item => <li>{`[${moment(item.start.dateTime).format('DD.MM.YYYY')}] // ${item.summary}`}</li>)}
+        {currentEvents?.map(item => <li>{`[${moment(item.start.dateTime).format('DD.MM.YYYY')}] // ${item.summary}`}</li>)}
       </ul>
     </div>
   );
