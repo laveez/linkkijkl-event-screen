@@ -49,7 +49,7 @@
 #events h2 {
   font-weight: normal;
   font-size: 6vh;
-
+  text-align: center;
   padding: 0;
   margin: 0;
   margin-bottom: 2vh;
@@ -61,7 +61,6 @@
   position: absolute;
   background: #000;
   color: #ffbf00;
-  text-align: center;
 
   grid-row: 9 / 13;
   grid-column: 1;
@@ -73,6 +72,7 @@
   margin-bottom: 1vh;
   font-weight: normal;
   font-size: 4vh;
+  text-align: center;
 }
 
 #sponsorsLogos {
@@ -89,7 +89,7 @@
 }
 
 #lunch {
-  padding: 3vh;
+  padding: 2vh;
   position: relative;
   overflow: hidden;
 
@@ -113,12 +113,12 @@
 }
 
 #lunch h2 {
-  color: #ffbf00;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
   font-weight: normal;
   font-size: 4vh;
   text-align: center;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 2vh;
 }
 
 #app:after {
@@ -153,10 +153,11 @@
   right:0;
   top: 0;
   height:100%;
-  width:100%;
-  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.4) 50%, rgba(0,0,0,0));
-  background-position: center 20%;
-  background-size: 100% 0.5vh;
+  width:10vw;
+  background: linear-gradient(90deg, rgba(0,0,0,0), #000);
+  background-position: center;
+  background-size: 100% calc(100% - 0.8vw);
+  background-repeat: no-repeat;
 }
 
 #lunch:after {

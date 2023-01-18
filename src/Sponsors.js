@@ -23,11 +23,11 @@ const Sponsors = () => {
 
   return (
     <div id="sponsors">
-      <h2>Sponsored by:</h2>
+      <h2>Sponsored by</h2>
       <div id="sponsorsLogos">
         {!images.length > 0 && <Spinner size={50}/>}
         {images.length > 0 && <Marquee
-          gradient={false}
+          gradientColor={[0, 0, 0]}
           speed={30}
         >
           {images.map((image, i) => (

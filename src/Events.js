@@ -21,7 +21,7 @@ const Events = () => {
 
   return (
     <div id="events">
-      <h2>Tapahtumat:</h2>
+      <h2>Tapahtumat</h2>
       {!currentEvents && <Spinner size={40}/>}
       <ul>
         {currentEvents?.map(item =>
