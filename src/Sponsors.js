@@ -8,7 +8,7 @@ const SponsorImage = ({ src, alt }) => {
 
   return (<>
     {loading && <Spinner size={50}/>}
-    <img src={src} alt={alt} style={{margin: '0 100px 0'}} onLoad={() => setLoading(false)}/>
+    <img src={src} alt={alt} style={{margin: '0 5vw 0'}} onLoad={() => setLoading(false)}/>
   </>);
 };
 
