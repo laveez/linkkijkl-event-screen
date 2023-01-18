@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/linkkijkl-event-screen/static/css/main.87692ee9.css",
-    "main.js": "/linkkijkl-event-screen/static/js/main.6450bc05.js",
-    "static/js/787.3bfdf7ee.chunk.js": "/linkkijkl-event-screen/static/js/787.3bfdf7ee.chunk.js",
+    "main.css": "/linkkijkl-event-screen/static/css/main.e1da524e.css",
+    "main.js": "/linkkijkl-event-screen/static/js/main.3a1c8c6b.js",
     "static/media/linkki_bg.png": "/linkkijkl-event-screen/static/media/linkki_bg.294434788eff66a0510e.png",
+    "static/media/pxplus_ibm_vga8-webfont.woff": "/linkkijkl-event-screen/static/media/pxplus_ibm_vga8-webfont.1815e345a44192848748.woff",
+    "static/media/pxplus_ibm_vga8-webfont.woff2": "/linkkijkl-event-screen/static/media/pxplus_ibm_vga8-webfont.d911f45469f544dda98e.woff2",
     "index.html": "/linkkijkl-event-screen/index.html",
-    "main.87692ee9.css.map": "/linkkijkl-event-screen/static/css/main.87692ee9.css.map",
-    "main.6450bc05.js.map": "/linkkijkl-event-screen/static/js/main.6450bc05.js.map",
-    "787.3bfdf7ee.chunk.js.map": "/linkkijkl-event-screen/static/js/787.3bfdf7ee.chunk.js.map"
+    "main.e1da524e.css.map": "/linkkijkl-event-screen/static/css/main.e1da524e.css.map",
+    "main.3a1c8c6b.js.map": "/linkkijkl-event-screen/static/js/main.3a1c8c6b.js.map"
   },
   "entrypoints": [
-    "static/css/main.87692ee9.css",
-    "static/js/main.6450bc05.js"
+    "static/css/main.e1da524e.css",
+    "static/js/main.3a1c8c6b.js"
   ]
 }
