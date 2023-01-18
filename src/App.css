@@ -84,12 +84,13 @@
 
 #sponsors img {
   filter: grayscale(100%) invert(100%) sepia(100%);
+  width: 20vh;
 }
 
 #lunch {
   padding: 3vh;
   position: relative;
-
+  overflow: hidden;
 
   text-shadow: 0 0 1vw rgba(0, 0, 0, 0.9);
 
