@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Marquee from 'react-fast-marquee';
+import Spinner from './Spinner';
+
+const SponsorImage = ({ src, alt }) => {
+  const [loading, setLoading] = useState(true);
+
+  return (<>
+    {loading && <Spinner size={50}/>}
+    <img src={src} alt={alt} width={200} style={{margin: '0 100px 0'}} onLoad={() => setLoading(false)}/>
+  </>);
+};
 
 const Sponsors = () => {
   const [images, setImages] = useState([
@@ -40,9 +50,8 @@ const Sponsors = () => {
             const backgroundImageUrl = style.match(/url\((.*)\)/)[1];
             imageUrls.push(backgroundImageUrl);
           }
+          setImages(imageUrls);
         }
-        setImages(imageUrls);
-        console.log(imageUrls)
       });
   }, [images.length]);
 
@@ -50,14 +59,15 @@ const Sponsors = () => {
     <div id="sponsors">
       <h2>Sponsored by:</h2>
       <div id="sponsorsLogos">
-        <Marquee
+        {!images.length > 0 && <Spinner size={50}/>}
+        {images.length > 0 && <Marquee
           gradient={false}
           speed={30}
         >
           {images.map((image, i) => (
-            <img key={i} src={image} alt={`img-${i}`} width={200} style={{margin: '0 100px 0'}}/>
+            <SponsorImage key={i} src={image} alt={`img-${i}`}/>
           ))}
-        </Marquee>
+        </Marquee>}
       </div>
     </div>
   );
