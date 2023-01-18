@@ -1,7 +1,7 @@
 {
   "name": "linkkijkl-event-screen",
   "version": "0.1.0",
-  "homepage": "https://laveez.github.io/",
+  "homepage": "https://laveez.github.io/linkkijkl-event-screen/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
