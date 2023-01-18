@@ -4,7 +4,10 @@
 
 This project is a very messy reboot of an old event screen made by [@kamiheku](https://github.com/kamiheku). 
 
+Uses [laveez/linkkijkl-event-screen-api](https://github.com/laveez/linkkijkl-event-screen-api) as an api
+
 This is/will be/was used in [Linkki Jyväskylä ry's](https://linkkijkl.fi/) student space Kattila.
+
 
 ## Deployment
 
