@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/linkkijkl-event-screen/static/css/main.0e1dd411.css",
-    "main.js": "/linkkijkl-event-screen/static/js/main.b4977ea1.js",
+    "main.js": "/linkkijkl-event-screen/static/js/main.322b1655.js",
     "static/media/linkki_bg.png": "/linkkijkl-event-screen/static/media/linkki_bg.294434788eff66a0510e.png",
     "static/media/pxplus_ibm_vga8-webfont.woff": "/linkkijkl-event-screen/static/media/pxplus_ibm_vga8-webfont.1815e345a44192848748.woff",
     "static/media/pxplus_ibm_vga8-webfont.woff2": "/linkkijkl-event-screen/static/media/pxplus_ibm_vga8-webfont.d911f45469f544dda98e.woff2",
     "index.html": "/linkkijkl-event-screen/index.html",
     "main.0e1dd411.css.map": "/linkkijkl-event-screen/static/css/main.0e1dd411.css.map",
-    "main.b4977ea1.js.map": "/linkkijkl-event-screen/static/js/main.b4977ea1.js.map"
+    "main.322b1655.js.map": "/linkkijkl-event-screen/static/js/main.322b1655.js.map"
   },
   "entrypoints": [
     "static/css/main.0e1dd411.css",
-    "static/js/main.b4977ea1.js"
+    "static/js/main.322b1655.js"
   ]
 }
