@@ -20,7 +20,7 @@ const Events = () => {
       <ul>
         {eventData?.map(item =>
           <li>
-            {`[${moment(item.start.dateTime).format('DD.MM.YYYY')}] // ${item.summary}`}
+            {`[${moment(item.start.dateTime || item.start.date || "").format('DD.MM.YYYY')}] // ${item.summary}`}
           </li>
         )}
       </ul>
