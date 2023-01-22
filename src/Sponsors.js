@@ -15,6 +15,9 @@ const SponsorImage = ({ src, alt }) => {
 const Sponsors = () => {
   const [images, setImages] = useState([]);
 
+  /**
+   * Fetch image urls
+   */
   useEffect(() => {
     fetch(API_URL + '/sponsors')
       .then(res => res.json())

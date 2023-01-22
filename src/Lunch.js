@@ -4,17 +4,26 @@ import Spinner from './Spinner';
 
 const Lunch = () => {
   const [ lunchData, setLunchData ] = useState();
+  const [ loading, setLoading ] = useState(true);
 
+  /**
+   * Fetch lunch data and set loading attribute
+   */
   useEffect(() => {
+    setLoading(true);
     fetch(API_URL + '/lunch')
       .then(response => response.json())
-      .then(data => setLunchData(data.LunchMenu));
+      .then(data => {
+        setLunchData(data.LunchMenu);
+        setLoading(false);
+      });
   }, []);
 
   return (
     <div id="lunch">
       <h2>Piato lounas</h2>
-      {!lunchData && <Spinner size={40}/>}
+      {loading && <Spinner size={40}/>}
+      {!lunchData && !loading && <p>Ei lounasta tänään</p>}
       {lunchData?.SetMenus.map((setMenu, i) => (
         <div key={i} style={{marginBottom: '4vh'}}>
           <ul>
