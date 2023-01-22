@@ -2,12 +2,19 @@ import './App.css';
 import Events from './Events';
 import Lunch from './Lunch';
 import Sponsors from './Sponsors';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import Spinner from './Spinner';
 
 export const API_URL = process.env.REACT_APP_API_URL;
 
 function App() {
-  const [cursorVisible, setCursorVisible] = useState(true);
+  const [ cursorVisible, setCursorVisible ] = useState(true);
+  const [ isLoadingEvents, setIsLoadingEvents ] = useState(true);
+  const [ isLoadingLunch, setIsLoadingLunch ] = useState(true);
+  const [ isLoadingSponsors, setIsLoadingSponsors ] = useState(true);
+
+  // Check that everything is loaded
+  const allLoaded = !(isLoadingEvents || isLoadingLunch || isLoadingSponsors);
 
   // Automatically refresh the page every 1 hour
   useEffect(() => {
@@ -29,10 +36,11 @@ function App() {
   }, []);
 
   return (
-    <div id="app" className={cursorVisible ? 'cursor-visible' : 'cursor-hidden'}>
-      <Events />
-      <Lunch />
-      <Sponsors />
+    <div id="app" className={`${cursorVisible ? 'cursor-visible' : 'cursor-hidden'} ${!allLoaded ? 'loading' : ''}`}>
+      {!allLoaded && <Spinner /> }
+      <Events isLoading={setIsLoadingEvents}/>
+      <Lunch isLoading={setIsLoadingLunch}/>
+      <Sponsors isLoading={setIsLoadingSponsors}/>
     </div>
   );
 }

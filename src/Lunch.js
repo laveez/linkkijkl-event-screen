@@ -1,29 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { API_URL } from './App';
-import Spinner from './Spinner';
 
-const Lunch = () => {
+/**
+ * A component to display lunch
+ * @param isLoading a method to update the loading state of lunch to parent component
+ * @returns {JSX.Element} lunch items in a list
+ */
+const Lunch = ({ isLoading }) => {
   const [ lunchData, setLunchData ] = useState();
-  const [ loading, setLoading ] = useState(true);
 
   /**
    * Fetch lunch data and set loading attribute
    */
   useEffect(() => {
-    setLoading(true);
+    isLoading(true);
     fetch(API_URL + '/lunch')
       .then(response => response.json())
       .then(data => {
         setLunchData(data.LunchMenu);
-        setLoading(false);
+        isLoading(false);
       });
   }, []);
 
   return (
     <div id="lunch">
       <h2>Piato lounas</h2>
-      {loading && <Spinner size={40}/>}
-      {!lunchData && !loading && <p>Ei lounasta tänään</p>}
+      {!lunchData && <p>Ei lounasta tänään</p>}
       {lunchData?.SetMenus.map((setMenu, i) => (
         <div key={i} style={{marginBottom: '4vh'}}>
           <ul>

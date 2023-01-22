@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import moment from 'moment/moment';
-import Spinner from './Spinner';
 import { API_URL } from './App';
 
-const Events = () => {
-
+/**
+ * A component to display events
+ * @param isLoading a method to update the loading state of events to parent component
+ * @returns {JSX.Element} events in a list
+ */
+const Events = ({ isLoading }) => {
   const [ eventData, setEventData ] = useState();
   const [ glitch, setGlitch ] = useState(false);
 
@@ -12,9 +15,13 @@ const Events = () => {
    * Fetch event data
    */
   useEffect(() => {
+    isLoading(true);
     fetch(API_URL + '/events')
-        .then(response => response.json())
-        .then(data => setEventData(data?.items));
+      .then(response => response.json())
+      .then(data => {
+        setEventData(data?.items);
+        isLoading(false);
+      });
   }, []);
 
   /**
@@ -46,8 +53,8 @@ const Events = () => {
   return (
     <div id="events" className={glitch ? 'glitch' : ''}>
       <h2>Tapahtumat</h2>
-      {!eventData && <Spinner size={40}/>}
       <ul>
+        {!eventData && <>Ei tapahtumia</>}
         {eventData?.map(item =>
           <li>
             {`[${moment(item.start.dateTime || item.start.date || "").format('DD.MM.YYYY')}` +
