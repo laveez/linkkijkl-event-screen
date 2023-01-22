@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/linkkijkl-event-screen.iml" filepath="$PROJECT_DIR$/.idea/linkkijkl-event-screen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../linkkijkl-event-screen-api/.idea/linkkijkl-event-screen-api.iml" filepath="$PROJECT_DIR$/../linkkijkl-event-screen-api/.idea/linkkijkl-event-screen-api.iml" />
     </modules>
   </component>
 </project>
