@@ -20,7 +20,7 @@ const Lunch = ({ isLoading }) => {
         setLunchData(data.LunchMenu);
         isLoading(false);
       });
-  }, []);
+  }, [ isLoading ]);
 
   return (
     <div id="lunch">

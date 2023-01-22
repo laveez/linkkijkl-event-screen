@@ -22,7 +22,7 @@ const Events = ({ isLoading }) => {
         setEventData(data?.items);
         isLoading(false);
       });
-  }, []);
+  }, [ isLoading ]);
 
   /**
    * Glitch effect
@@ -57,8 +57,8 @@ const Events = ({ isLoading }) => {
         {!eventData && <>Ei tapahtumia</>}
         {eventData?.map(item =>
           <li>
-            {`[${moment(item.start.dateTime || item.start.date || "").format('DD.MM.YYYY')}` +
-              `${item.start.dateTime && " " + moment(item.start.dateTime).format('HH:mm')}]` +
+            {`[${moment(item.start.dateTime || item.start.date || "").format('DD/MM/YYYY')}` +
+              `${item.start.dateTime ? '·' + moment(item.start.dateTime).format('HH:mm') : ''}]` +
               ` // ${item.summary}`}
           </li>
         )}

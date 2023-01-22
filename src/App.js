@@ -12,11 +12,24 @@ function App() {
   const [ isLoadingEvents, setIsLoadingEvents ] = useState(true);
   const [ isLoadingLunch, setIsLoadingLunch ] = useState(true);
   const [ isLoadingSponsors, setIsLoadingSponsors ] = useState(true);
+  const [ allLoaded, setAllLoaded ] = useState(false);
 
   // Check that everything is loaded
-  const allLoaded = !(isLoadingEvents || isLoadingLunch || isLoadingSponsors);
+  useEffect(() => {
+    setAllLoaded(!(isLoadingEvents || isLoadingLunch || isLoadingSponsors));
+  }, [ isLoadingEvents, isLoadingLunch, isLoadingSponsors ]);
 
-  // Automatically refresh the page every 1 hour
+  // Reload page after waiting 5 seconds if not allLoaded
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (!allLoaded) {
+        window.location.reload();
+      }
+    }, 5000);
+    return () => clearTimeout(timeout);
+  }, [ allLoaded ]);
+
+  // Automatically reload the page every 1 hour
   useEffect(() => {
     setInterval(() => {
       window.location.reload();

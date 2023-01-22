@@ -10,9 +10,7 @@ import { API_URL } from './App';
  * @returns {JSX.Element} img with given src and alt
  */
 const SponsorImage = ({ src, alt, updateLoading }) => {
-  return (<>
-    <img src={src} alt={alt} onLoad={() => {updateLoading(false)}}/>
-  </>);
+  return <img src={src} alt={alt} onLoad={() => {updateLoading(false)}}/>;
 };
 
 /**
@@ -44,7 +42,7 @@ const Sponsors = ({ isLoading }) => {
     if (imagesLoading.length > 0 && imagesLoading.every(el => el === false)) {
       isLoading(false);
     }
-  }, [ imagesLoading ]);
+  }, [ imagesLoading, isLoading ]);
 
   /**
    * Update the loading status of a single image by index
