@@ -25,7 +25,7 @@ function App() {
       if (!allLoaded) {
         window.location.reload();
       }
-    }, 5000);
+    }, 10000);
     return () => clearTimeout(timeout);
   }, [ allLoaded ]);
 
