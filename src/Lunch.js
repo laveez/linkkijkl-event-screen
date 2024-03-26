@@ -1,32 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { API_URL } from './App';
+import React from 'react';
 
 /**
  * A component to display lunch
- * @param isLoading a method to update the loading state of lunch to parent component
+ * @param name title for the lunch
+ * @param data an array of lunch items
+ * @param className a class name for styling
  * @returns {JSX.Element} lunch items in a list
  */
-const Lunch = ({ isLoading }) => {
-  const [ lunchData, setLunchData ] = useState();
-
-  /**
-   * Fetch lunch data and set loading attribute
-   */
-  useEffect(() => {
-    isLoading(true);
-    fetch(API_URL + '/lunch')
-      .then(response => response.json())
-      .then(data => {
-        setLunchData(data.LunchMenu);
-        isLoading(false);
-      });
-  }, [ isLoading ]);
+const Lunch = ({ name, data, className }) => {
 
   return (
-    <div id="lunch">
-      <h2>Piato lounas</h2>
-      {!lunchData && <p>Ei lounasta tänään</p>}
-      {lunchData?.SetMenus.map((setMenu, i) => (
+    <div id="lunch" className={className}>
+      <h2>{name} lounas</h2>
+      {!data || data?.length === 0 && <p>Ei lounasta tänään</p>}
+      {data?.map((setMenu, i) => (
         <div key={i} style={{marginBottom: '4vh'}}>
           <ul>
             <li>{setMenu.Name}{setMenu.Name && ' // '}{setMenu.Price}</li>

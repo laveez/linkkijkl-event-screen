@@ -1,28 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import moment from 'moment/moment';
-import { API_URL } from './App';
 
 /**
  * A component to display events
- * @param isLoading a method to update the loading state of events to parent component
+ * @param name title for the events
+ * @param data an array of events
+ * @param className a class name for styling
  * @returns {JSX.Element} events in a list
  */
-const Events = ({ isLoading }) => {
-  const [ eventData, setEventData ] = useState();
+const Events = ({ name, data, className }) => {
   const [ glitch, setGlitch ] = useState(false);
-
-  /**
-   * Fetch event data
-   */
-  useEffect(() => {
-    isLoading(true);
-    fetch(API_URL + '/events')
-      .then(response => response.json())
-      .then(data => {
-        setEventData(data?.items);
-        isLoading(false);
-      });
-  }, [ isLoading ]);
 
   /**
    * Glitch effect
@@ -51,12 +38,12 @@ const Events = ({ isLoading }) => {
   }, []);
 
   return (
-    <div id="events" className={glitch ? 'glitch' : ''}>
-      <h2>Tapahtumat</h2>
+    <div id="events" className={glitch ? `glitch ${className}` : className}>
+      <h2>{name} tapahtumat</h2>
       <ul>
-        {!eventData && <>Ei tapahtumia</>}
-        {eventData?.map(item =>
-          <li>
+        {!data || data?.length === 0 && <>Ei tapahtumia</>}
+        {data?.map((item, i) =>
+          <li key={`event-${i}`}>
             {`[${moment(item.start.dateTime || item.start.date || "").format('DD/MM/YYYY')}` +
               `${item.start.dateTime ? '·' + moment(item.start.dateTime).format('HH:mm') : ''}]` +
               ` // ${item.summary}`}

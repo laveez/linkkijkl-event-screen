@@ -1,14 +1,13 @@
-#root {
+#app {
   height: 100vh;
-  background: #ffbf00;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: none;
 }
 
-#app {
+#app-container {
   position: absolute;
-  background: #ffbf00;
   height: 99.2vh;
   width: 99.2vw;
   display: grid;
@@ -18,12 +17,46 @@
   grid-gap: 0.8vh 0.4vw;
 }
 
-.cursor-visible {
-  cursor: default;
+#app.linkki, #app-container.linkki {
+  background: #387dff;
 }
 
-.cursor-hidden {
-  cursor: none;
+#app.algo, #app-container.algo {
+  background: hsla(358.15, 97.01%, 86.86%, 1);
+}
+
+#events.linkki, #lunch.linkki, #sponsors.linkki {
+  text-shadow: 0 0 2px rgb(125, 166, 255);
+  color: #387dff;
+}
+
+#events.algo, #lunch.algo, #sponsors.algo {
+  text-shadow: 0 0 2px rgb(255, 216, 217);
+  color: hsla(358.15, 97.01%, 86.86%, 1);
+}
+
+#events.linkki, #events.linkki:before {
+  background-image: url('linkki_bg.png');
+}
+
+#events.algo, #events.algo:before {
+  background-image: url('algo_bg.png');
+}
+
+.fade-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 1000ms ease-in-out;
+}
+
+.fade-transition-overlay-active {
+  opacity: 1;
 }
 
 .loading:after {
@@ -43,11 +76,7 @@
   overflow: hidden;
   position: relative;
 
-  text-shadow: 0 0 1vw rgba(0, 0, 0, 0.9);
-
-  color: #ffbf00;
   background: #000;
-  background-image: url('linkki_bg.png');
   background-size: 80vh;
   background-position: center;
   background-repeat: no-repeat;
@@ -67,7 +96,6 @@
   width:100%;
   height:100%;
 
-  background-image: url('linkki_bg.png');
   background-size: 80vh;
   background-position: center;
   background-repeat: no-repeat;
@@ -105,14 +133,12 @@
   width: 100%;
   position: absolute;
   background: #000;
-  color: #ffbf00;
 
   grid-row: 9 / 13;
   grid-column: 1;
 }
 
 #sponsors h2 {
-  color: #ffbf00;
   margin-top: 1vh;
   margin-bottom: 1vh;
   font-weight: normal;
@@ -139,8 +165,6 @@
   overflow: hidden;
 
   text-shadow: 0 0 1vw rgba(0, 0, 0, 0.9);
-
-  color: #ffbf00;
   background: #000;
 
   line-height: 3vh;
