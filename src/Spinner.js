@@ -63,7 +63,7 @@ const Spinner = ({
   sizeFactor = 1,
   ...props
 }) => {
-  const [currentColor, setCurrentColor] = useState(color);
+  const [ currentColor, setCurrentColor ] = useState(color);
 
   /**
    * Transition between colors when the color prop changes
@@ -86,7 +86,8 @@ const Spinner = ({
     };
 
     requestAnimationFrame(step);
-  }, [color]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ color ]);
 
   // Set options for the loader
   const options = {

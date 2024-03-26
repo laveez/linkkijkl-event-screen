@@ -12,7 +12,7 @@ const Lunch = ({ name, data, className }) => {
   return (
     <div id="lunch" className={className}>
       <h2>{name} lounas</h2>
-      {!data || data?.length === 0 && <p>Ei lounasta tänään</p>}
+      {(!data || data?.length === 0) && <p>Ei lounasta tänään</p>}
       {data?.map((setMenu, i) => (
         <div key={i} style={{marginBottom: '4vh'}}>
           <ul>

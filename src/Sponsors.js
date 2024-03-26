@@ -23,7 +23,7 @@ const Sponsors = ({ data, className }) => {
     <div id="sponsors" className={className}>
       <h2>Sponsored by</h2>
       <div id="sponsorsLogos">
-        {!data || data?.length === 0 && <>Ei sponsoreita</>}
+        {(!data || data?.length === 0) && <>Ei sponsoreita</>}
         {data?.length > 0 && <Marquee
           gradientColor={[0, 0, 0]}
           speed={data?.length * 5}

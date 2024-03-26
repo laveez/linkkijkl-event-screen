@@ -41,7 +41,7 @@ const Events = ({ name, data, className }) => {
     <div id="events" className={glitch ? `glitch ${className}` : className}>
       <h2>{name} tapahtumat</h2>
       <ul>
-        {!data || data?.length === 0 && <>Ei tapahtumia</>}
+        {(!data || data?.length === 0) && <>Ei tapahtumia</>}
         {data?.map((item, i) =>
           <li key={`event-${i}`}>
             {`[${moment(item.start.dateTime || item.start.date || "").format('DD/MM/YYYY')}` +
