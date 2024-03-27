@@ -8,7 +8,7 @@ import linkkiBg from './linkki_bg.png'
  * @param route a route to fetch the lunch from, e.g. 'piato' or 'maija'
  * @returns {Promise<unknown>} a promise that resolves with the fetched data
  */
-export const getLunchData = (route) => {
+export const getLunchData = route => {
   return new Promise((resolve, reject) => {
     fetch(API_URL + `/lunch/${route}`)
       .then(response => response.json())
@@ -26,7 +26,7 @@ export const getLunchData = (route) => {
  * @param route a route to fetch the events from, e.g. 'linkki' or 'algo'
  * @returns {Promise<unknown>} a promise that resolves with the fetched data
  */
-export const getEventData = (route) => {
+export const getEventData = route => {
   return new Promise((resolve, reject) => {
     fetch(API_URL + `/events/${route}`)
       .then(response => response.json())
@@ -44,7 +44,7 @@ export const getEventData = (route) => {
  * @param route a route to fetch the sponsors from, e.g. 'linkki' or 'algo'
  * @returns {Promise<unknown>} a promise that resolves with the fetched data
  */
-export const getSponsors = (route) => {
+export const getSponsors = route => {
   return new Promise((resolve, reject) => {
     fetch(API_URL + `/sponsors/${route}`)
       .then(response => response.json())
@@ -64,9 +64,9 @@ export const getSponsors = (route) => {
  * @param fetchFunctions an object containing functions to fetch data
  * @returns {[{},boolean]} an array containing the fetched data and loading state
  */
-export const useFetchData = (fetchFunctions) => {
-  const [data, setData] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
+export const useFetchData = fetchFunctions => {
+  const [ data, setData ] = useState({});
+  const [ isLoading, setIsLoading ] = useState(true);
 
   /**
    * Loads an image from the given image url and calls the onLoad function when the image is loaded
@@ -90,7 +90,7 @@ export const useFetchData = (fetchFunctions) => {
    */
   const loadImages = useCallback((imageUrls, onAllImagesLoaded) => {
     let imagesLoaded = 0;
-    imageUrls.forEach((imageUrl) => {
+    imageUrls.forEach(imageUrl => {
       loadImage(imageUrl, () => {
         imagesLoaded++;
         if (imagesLoaded === imageUrls.length) {
@@ -98,7 +98,7 @@ export const useFetchData = (fetchFunctions) => {
         }
       });
     });
-  }, [loadImage]);
+  }, [ loadImage ]);
 
   /**
    * Handles fetched data by setting the data and preloading images
@@ -106,36 +106,32 @@ export const useFetchData = (fetchFunctions) => {
    * @returns {void}
    * @type {(function(*): void)|*}
    */
-  const handleFetchData = useCallback((fetchedData) => {
+  const handleFetchData = useCallback(fetchedData => {
     const fetchedDataObj = Object.fromEntries(fetchedData);
     setData(fetchedDataObj);
 
     const sponsorImages = [ ...fetchedDataObj.linkkiSponsors, ...fetchedDataObj.algoSponsors ];
     const bgImages = [ algoBg, linkkiBg ];
 
-    loadImages([...sponsorImages, ...bgImages], () => setIsLoading(false));
-  }, [loadImages]);
+    loadImages([ ...sponsorImages, ...bgImages ], () => setIsLoading(false));
+  }, [ loadImages ]);
 
   /**
    * Fetches data from the given fetch functions
    * Sets the loading state to true when fetching data
-   * Sets the loading state to false when all data is fetched
-   * Logs an error if fetching data fails
+   * Sets the loading state to false when all data is fetched or when an error occurs
    */
   useEffect(() => {
     setIsLoading(true);
-    Promise.all(Object.entries(fetchFunctions).map(([key, fn]) =>
-      fn().then(result => [key, result]).catch(error => {
-        console.error(error);
-        return [key, []]; // return default value for failed fetch function
-      })
-    ))
+    Promise.all(Object.entries(fetchFunctions).map(([ key, fn ]) =>
+      fn().then(result => [ key, result ]).catch(()  => {
+        return [ key, [] ]; // return default value for failed fetch function
+      })))
       .then(handleFetchData)
-      .catch(error => {
-        console.error(error);
+      .catch(() => {
         setIsLoading(false);
       });
-  }, [fetchFunctions, handleFetchData]);
+  }, [ fetchFunctions, handleFetchData ]);
 
-  return [data, isLoading];
+  return [ data, isLoading ];
 }

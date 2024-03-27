@@ -14,12 +14,11 @@ const Lunch = ({ name, data, className }) => {
       <h2>{name} lounas</h2>
       {(!data || data?.length === 0) && <p>Ei lounasta tänään</p>}
       {data?.map((setMenu, i) => (
-        <div key={i} style={{marginBottom: '4vh'}}>
+        <div key={i} style={{ marginBottom: '4vh' }}>
           <ul>
             <li>{setMenu.Name}{setMenu.Name && ' // '}{setMenu.Price}</li>
-            {setMenu.Meals.map((meal, j) => (
-              <li key={j}>{meal.Name}</li>
-            ))}
+            {setMenu.Meals.map((meal, j) => 
+              <li key={j}>{meal.Name}</li>)}
           </ul>
         </div>
       ))}

@@ -16,9 +16,8 @@ export const API_URL = process.env.REACT_APP_API_URL;
  * @param Component a component used to display the data
  * @returns {JSX.Element} the data displayed with the given component
  */
-const DataComponent = ({ name, data, className, Component }) => (
-  <Component name={name} data={data} className={className} />
-);
+const DataComponent = ({ name, data, className, Component }) => 
+  <Component name={name} data={data} className={className} />;
 
 function App() {
   const [ showAlternate, setShowAlternate ] = useState(false);
@@ -39,9 +38,9 @@ function App() {
     algoSponsors: fetchAlgoSponsors,
     maijaLunch: fetchMaijaLunch,
     piatoLunch: fetchPiatoLunch,
-  }), [fetchLinkkiEvents, fetchAlgoEvents, fetchLinkkiSponsors, fetchAlgoSponsors, fetchMaijaLunch, fetchPiatoLunch]);
+  }), [ fetchLinkkiEvents, fetchAlgoEvents, fetchLinkkiSponsors, fetchAlgoSponsors, fetchMaijaLunch, fetchPiatoLunch ]);
 
-  const [data, isLoading] = useFetchData(fetchFunctions);
+  const [ data, isLoading ] = useFetchData(fetchFunctions);
 
   // Automatically reload the page every 1 hour
   useEffect(() => {

@@ -47,8 +47,7 @@ const Events = ({ name, data, className }) => {
             {`[${moment(item.start.dateTime || item.start.date || "").format('DD/MM/YYYY')}` +
               `${item.start.dateTime ? '·' + moment(item.start.dateTime).format('HH:mm') : ''}]` +
               ` // ${item.summary}`}
-          </li>
-        )}
+          </li>)}
       </ul>
     </div>
   );

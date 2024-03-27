@@ -31,7 +31,9 @@ const calculateIntermediateColor = (currentColor, targetColor, progress) => {
   };
 
   // Convert intermediate color to string
-  return `rgb(${Math.round(intermediateColorRGB.r)}, ${Math.round(intermediateColorRGB.g)}, ${Math.round(intermediateColorRGB.b)})`;
+  return `rgb(${Math.round(intermediateColorRGB.r)}, ` +
+    `${Math.round(intermediateColorRGB.g)}, ` +
+    `${Math.round(intermediateColorRGB.b)})`;
 };
 
 /**
@@ -39,7 +41,7 @@ const calculateIntermediateColor = (currentColor, targetColor, progress) => {
  * @param {string} color - The color in hex format.
  * @returns {Object} The color in rgb format as an object with r, g, and b properties.
  */
-const parseColor = (color) => {
+const parseColor = color => {
   const match = color.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);
   return {
     r: parseInt(match[1], 16),
@@ -73,7 +75,7 @@ const Spinner = ({
     let start;
     const duration = 1000; // transition duration in milliseconds
 
-    const step = (timestamp) => {
+    const step = timestamp => {
       if (!start) start = timestamp;
       const progress = timestamp - start;
       const newColor = calculateIntermediateColor(currentColor, color, progress / duration);
