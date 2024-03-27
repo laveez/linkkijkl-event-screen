@@ -26,7 +26,7 @@ const Sponsors = ({ data, className }) => {
         {(!data || data?.length === 0) && <>Ei sponsoreita</>}
         {data?.length > 0 && <Marquee
           gradientColor={[0, 0, 0]}
-          speed={data?.length * 5}
+          speed={data?.length + 30}
         >
           {data.map((image, i) => (
             <SponsorImage

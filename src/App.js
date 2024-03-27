@@ -4,39 +4,9 @@ import Lunch from './Lunch';
 import Sponsors from './Sponsors';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import Spinner, { LOADER_TYPES } from './Spinner';
-import { getEventData, getLunchData, getSponsors } from './dataQueries';
+import { getEventData, getLunchData, getSponsors, useFetchData } from './dataQueries';
 
 export const API_URL = process.env.REACT_APP_API_URL;
-
-/**
- * Fetches data from multiple sources and returns the data and loading state
- * @param fetchFunctions an object containing functions that return promises
- * @returns {[{},boolean]} an array containing the fetched data and loading state
- */
-const useFetchData = (fetchFunctions) => {
-  const [data, setData] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    setIsLoading(true);
-    Promise.all(Object.entries(fetchFunctions).map(([key, fn]) =>
-      fn().then(result => [key, result]).catch(error => {
-        console.error(error);
-        return [key, []]; // return default value for failed fetch function
-      })
-    ))
-      .then(fetchedData => {
-        setData(Object.fromEntries(fetchedData));
-        setIsLoading(false);
-      })
-      .catch(error => {
-        console.error(error);
-        setIsLoading(false);
-      });
-  }, [fetchFunctions]);
-
-  return [data, isLoading];
-}
 
 /**
  * A component to display data

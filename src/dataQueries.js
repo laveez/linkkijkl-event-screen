@@ -1,4 +1,7 @@
 import { API_URL } from './App';
+import { useCallback, useEffect, useState } from 'react';
+import algoBg from './algo_bg.png'
+import linkkiBg from './linkki_bg.png'
 
 /**
  * Fetches lunch data from the API
@@ -53,3 +56,86 @@ export const getSponsors = (route) => {
       });
   });
 };
+
+/**
+ * Custom hook to fetch data from the API
+ * Fetches data from the given fetch functions and sets the data and loading state
+ * Also preloads images before setting the loading state to false
+ * @param fetchFunctions an object containing functions to fetch data
+ * @returns {[{},boolean]} an array containing the fetched data and loading state
+ */
+export const useFetchData = (fetchFunctions) => {
+  const [data, setData] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  /**
+   * Loads an image from the given image url and calls the onLoad function when the image is loaded
+   * @param imageUrl an image url
+   * @param onLoad a function to call when the image is loaded
+   * @returns {void}
+   * @type {(function(*, *): void)|*}
+   */
+  const loadImage = useCallback((imageUrl, onLoad) => {
+    const img = new Image();
+    img.onload = onLoad;
+    img.src = imageUrl;
+  }, []);
+
+  /**
+   * Preloads images from the given image urls and calls the onAllImagesLoaded function when all images are loaded
+   * @param imageUrls an array of image urls
+   * @param onAllImagesLoaded a function to call when all images are loaded
+   * @returns {void}
+   * @type {(function(*, *): void)|*}
+   */
+  const loadImages = useCallback((imageUrls, onAllImagesLoaded) => {
+    let imagesLoaded = 0;
+    imageUrls.forEach((imageUrl) => {
+      loadImage(imageUrl, () => {
+        imagesLoaded++;
+        if (imagesLoaded === imageUrls.length) {
+          onAllImagesLoaded();
+        }
+      });
+    });
+  }, [loadImage]);
+
+  /**
+   * Handles fetched data by setting the data and preloading images
+   * @param fetchedData an array of fetched data
+   * @returns {void}
+   * @type {(function(*): void)|*}
+   */
+  const handleFetchData = useCallback((fetchedData) => {
+    const fetchedDataObj = Object.fromEntries(fetchedData);
+    setData(fetchedDataObj);
+
+    const sponsorImages = [ ...fetchedDataObj.linkkiSponsors, ...fetchedDataObj.algoSponsors ];
+    const bgImages = [ algoBg, linkkiBg ];
+
+    loadImages([...sponsorImages, ...bgImages], () => setIsLoading(false));
+  }, [loadImages]);
+
+  /**
+   * Fetches data from the given fetch functions
+   * Sets the loading state to true when fetching data
+   * Sets the loading state to false when all data is fetched
+   * Logs an error if fetching data fails
+   */
+  useEffect(() => {
+    setIsLoading(true);
+    Promise.all(Object.entries(fetchFunctions).map(([key, fn]) =>
+      fn().then(result => [key, result]).catch(error => {
+        console.error(error);
+        return [key, []]; // return default value for failed fetch function
+      })
+    ))
+      .then(handleFetchData)
+      .catch(error => {
+        console.error(error);
+        setIsLoading(false);
+      });
+  }, [fetchFunctions, handleFetchData]);
+
+  return [data, isLoading];
+}
