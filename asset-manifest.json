@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/linkkijkl-event-screen/static/css/main.9afaf3c9.css",
-    "main.js": "/linkkijkl-event-screen/static/js/main.b5b76e4c.js",
+    "main.js": "/linkkijkl-event-screen/static/js/main.53283ff3.js",
     "static/media/linkki_bg.png": "/linkkijkl-event-screen/static/media/linkki_bg.294434788eff66a0510e.png",
     "static/media/algo_bg.png": "/linkkijkl-event-screen/static/media/algo_bg.6460088a8c15f4be5795.png",
     "static/media/pxplus_ibm_vga8-webfont.woff": "/linkkijkl-event-screen/static/media/pxplus_ibm_vga8-webfont.1815e345a44192848748.woff",
     "static/media/pxplus_ibm_vga8-webfont.woff2": "/linkkijkl-event-screen/static/media/pxplus_ibm_vga8-webfont.d911f45469f544dda98e.woff2",
     "index.html": "/linkkijkl-event-screen/index.html",
     "main.9afaf3c9.css.map": "/linkkijkl-event-screen/static/css/main.9afaf3c9.css.map",
-    "main.b5b76e4c.js.map": "/linkkijkl-event-screen/static/js/main.b5b76e4c.js.map"
+    "main.53283ff3.js.map": "/linkkijkl-event-screen/static/js/main.53283ff3.js.map"
   },
   "entrypoints": [
     "static/css/main.9afaf3c9.css",
-    "static/js/main.b5b76e4c.js"
+    "static/js/main.53283ff3.js"
   ]
 }
