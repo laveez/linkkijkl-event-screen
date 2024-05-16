@@ -4,7 +4,7 @@ import Lunch from './Lunch';
 import Sponsors from './Sponsors';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import Spinner, { LOADER_TYPES } from './Spinner';
-import { getEventData, getLunchData, getSponsors, useFetchData } from './dataQueries';
+import { getEventData, getLunchData, getSponsors, keepAlive, useFetchData } from './dataQueries';
 
 export const API_URL = process.env.REACT_APP_API_URL;
 
@@ -47,6 +47,12 @@ function App() {
     setInterval(() => {
       window.location.reload();
     }, 3600000);
+  }, []);
+
+  // Keep the server alive by pinging it every 10 minutes
+  useEffect(() => {
+    const intervalId = setInterval(keepAlive, 600000); // 600000 ms = 10 minutes
+    return () => clearInterval(intervalId); // cleanup on component unmount
   }, []);
 
   /**

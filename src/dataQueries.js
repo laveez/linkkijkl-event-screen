@@ -4,6 +4,14 @@ import algoBg from './algo_bg.png'
 import linkkiBg from './linkki_bg.png'
 
 /**
+ * Sends a keepalive request to the API to keep the server alive
+ * @returns {Promise<void>} a promise that resolves when the request is successful
+ */
+export const keepAlive = () => {
+  return fetch(API_URL + '/keep-alive').then(/* Do nothing */);
+};
+
+/**
  * Fetches lunch data from the API
  * @param route a route to fetch the lunch from, e.g. 'piato' or 'maija'
  * @returns {Promise<unknown>} a promise that resolves with the fetched data
