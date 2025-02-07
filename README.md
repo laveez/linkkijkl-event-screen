@@ -1,5 +1,11 @@
 # Linkki Jyväskylä ry event screen
 
+## NOTE: This repository will not be updated anymore
+
+You can find an up-to-date fork of this project at [Linkkijkl/linkkijkl-event-screen](https://github.com/Linkkijkl/linkkijkl-event-screen)
+
+An up-to-date deployment can (may)be found here [https://event.linkkijkl.fi/](https://event.linkkijkl.fi/)
+
 ## Description
 
 This project is a very messy reboot of an old event screen made by [@kamiheku](https://github.com/kamiheku). 
