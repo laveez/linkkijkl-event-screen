@@ -7,23 +7,22 @@ import React from 'react';
  * @param className a class name for styling
  * @returns {JSX.Element} lunch items in a list
  */
-const Lunch = ({ name, data, className }) => {
-
-  return (
-    <div id="lunch" className={className}>
-      <h2>{name} lounas</h2>
-      {(!data || data?.length === 0) && <p>Ei lounasta tänään</p>}
-      {data?.map((setMenu, i) => (
-        <div key={i} style={{ marginBottom: '4vh' }}>
-          <ul>
-            <li>{setMenu.Name}{setMenu.Name && ' // '}{setMenu.Price}</li>
-            {setMenu.Meals.map((meal, j) => 
-              <li key={j}>{meal.Name}</li>)}
-          </ul>
-        </div>
-      ))}
-    </div>
-  );
-};
+const Lunch = ({ name, data, className }) => (
+  <div id="lunch" className={className}>
+    <h2>{name} lounas</h2>
+    {(data == null || data?.length === 0 || !Array.isArray(data)) && <p>Ei lounasta tänään</p>}
+    {Array.isArray(data) && data?.map(setMenu => (
+      <div key={setMenu.sortOrder} style={{ marginBottom: '2vh' }}>
+        <ul>
+          <li>{setMenu.name} {setMenu.name && ' // '}{setMenu.price}</li>
+          {Array.isArray(setMenu.meals) && setMenu.meals?.map(meal =>
+            <li key={meal.recipeId}>
+              {meal.name}
+            </li>)}
+        </ul>
+      </div>
+    ))}
+  </div>
+);
 
 export default Lunch;

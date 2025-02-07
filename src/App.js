@@ -20,7 +20,8 @@ const DataComponent = ({ name, data, className, Component }) =>
   <Component name={name} data={data} className={className} />;
 
 function App() {
-  const [ showAlternate, setShowAlternate ] = useState(false);
+  // Initial state is randomly true or false
+  const [ showAlternate, setShowAlternate ] = useState(Math.random() < 0.5);
   const [ showAlternateColor, setShowAlternateColor ] = useState(false);
   const [ isTransitioning, setIsTransitioning ] = useState(false);
 

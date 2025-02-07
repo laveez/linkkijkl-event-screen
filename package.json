@@ -4,15 +4,15 @@
   "homepage": "https://laveez.github.io/linkkijkl-event-screen/",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "moment": "^2.29.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-fast-marquee": "^1.3.5",
+    "moment": "^2.30.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-fast-marquee": "^1.6.5",
     "react-scripts": "5.0.1",
-    "react-spinners": "^0.13.7",
+    "react-spinners": "^0.15.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -42,10 +42,10 @@
     ]
   },
   "devDependencies": {
-    "@babel/preset-react": "^7.24.1",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react": "^7.34.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
+    "@babel/preset-react": "^7.26.3",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^4.6.2",
     "gh-pages": "^4.0.0"
   }
 }
